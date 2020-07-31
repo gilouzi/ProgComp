@@ -66,6 +66,7 @@ int main() {
         dist[i] = pos[i];
 
         for(int v=1; v<n+1; v++){
+            if(i != 0){
             vis[i] = 1;
             int nv = 0;
             for(int w=0; w<g[i].size(); w++){
@@ -79,17 +80,20 @@ int main() {
             }
 
             //checando qual o menor proximo vizinho
-            for(int w=0; w<g[i].size(); w++){
-                if(dist[g[i][w]]<dist[nv] && vis[g[i][w]]==0) nv = g[i][w];
+            for(int w=0; w<n+1; w++){
+                if(dist[w]<dist[nv] && vis[w]==0) nv = w;
+                // if(dist[g[i][w]]<dist[nv] && vis[g[i][w]]==0) nv = g[i][w];
             }
 
             i=nv;
+            }
         }
-        
+        // for(int i=0; i<n+1; i++) printf("%d ",vis[i]);
+        // printf("\n");
         int min = dist[j];
         // int min = INT_MAX;
         // walk(pos,i,j,k,0,min,g,vis,dist);
-        printf("%d %.3lf\n",min, pow(p,min));
+        printf("%.3lf\n", pow(p,min));
     }
 
     
