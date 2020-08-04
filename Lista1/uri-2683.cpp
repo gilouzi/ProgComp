@@ -18,6 +18,8 @@ void updateKeyMax(int *keyMax, int *visMax, vector<pair<int,int>> g){
 }
 
 int minV(int *keyMin, int *visMin, int n, int minV){
+    minV = 1;
+    while(visMin[minV] == 1) minV++;
     for(int i=2; i<n+1; i++){
         if(keyMin[i] < keyMin[minV] && visMin[i]==0){
             minV=i;
@@ -27,6 +29,8 @@ int minV(int *keyMin, int *visMin, int n, int minV){
 }
 
 int maxV(int *keyMax, int *visMax, int n, int maxV){
+    maxV = 1;
+    while(visMax[maxV] == 1) maxV++;
     for(int i=2; i<n+1; i++){
         if(keyMax[i] > keyMax[maxV] && visMax[i]==0){
             maxV=i;
@@ -42,7 +46,7 @@ int main() {
     scanf("%d", &n);
 
     vector<pair<int,int>> g[n+1];
-    vector<pair<int,int>> nSet;
+    int N = 0;
     int keyMax[n+1];
     int visMax[n+1];
     int keyMin[n+1];
@@ -52,6 +56,8 @@ int main() {
         scanf("%d %d %d", &u, &v, &w);
         g[u].push_back(make_pair(v,w));
         g[v].push_back(make_pair(u,w));
+        if(u > N) N = u;
+        if(v > N) N = v;
         keyMin[i+1] = INT_MAX;
         visMin[i+1] = 0;
         keyMax[i+1] = -1;
@@ -67,14 +73,14 @@ int main() {
     keyMax[vMax] = 0;
     visMax[vMax] = 1;
 
-    for(int i=0; i<n; i++){
+    for(int i=0; i<N-1; i++){
         updateKeyMin(keyMin, visMin, g[vMin]);
-        vMin = minV(keyMin, visMin, n, g[vMin][0].first);
+        vMin = minV(keyMin, visMin, N, g[vMin][0].first);
         min += keyMin[vMin];
         visMin[vMin]=1;
 
         updateKeyMax(keyMax, visMax, g[vMax]);
-        vMax = maxV(keyMax, visMax, n, g[vMax][0].first);
+        vMax = maxV(keyMax, visMax, N, g[vMax][0].first);
         max += keyMax[vMax];
         visMax[vMax]=1;
     }
