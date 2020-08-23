@@ -11,7 +11,7 @@ int main() {
     scanf("%d %d", &n, &m);
     vector <int> g[n];
 
-    for(int i=0; i<n; i++){
+    for(int i=0; i<m; i++){
         s0.append("o");
         s1.append("o");
         s2.append("o");
@@ -38,16 +38,17 @@ int main() {
 
     int i=0;
 
-    while(i<n && s0.compare(s2)!=0){
-        for(int j=0; j<g[i].size(); j++){
-            if (s2[g[i][j]] == 'i') s2[g[i][j]] = 'o';
-            else s2[g[i][j]] = 'i';
+    while(s0!=s2){
+        if(i%n==0 && s1==s2 && i!=0) break;
+        for(int j=0; j<g[i%n].size(); j++){
+            if (s2[g[i%n][j]] == 'i') s2[g[i%n][j]] = 'o';
+            else s2[g[i%n][j]] = 'i';
         }
         // printf("%s\n", s2.c_str());
         i++;
     }
 
-    if(s0.compare(s2)!=0) printf("-1\n");
+    if(s0!=s2) printf("-1\n");
     else printf("%d\n", i);
     
     return 0;
