@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector> 
-#include <cmath>
+#include <bits/stdc++.h>
  
 int fat(int n){
     if(n==1) return 1;
