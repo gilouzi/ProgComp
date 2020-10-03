@@ -1,9 +1,13 @@
-#include <bits/stdc++.h>
+// #include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <math.h>
+
 using namespace std;
 
 void captura(int casas, int *t, int *l, int *c, int &max, int i, vector<int> adv){
     if(i-1 >= 0){
-        if(c[i-1])
+        // if(c[i-1])
     }
 }
 
