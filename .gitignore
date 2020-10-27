@@ -1,3 +1,6 @@
-Lista1/entrada.txt
-Lista1/a.out
-Lista1/.vscode/settings.json
+entrada.txt
+saida.txt
+input.txt
+a.out
+.vscode/settings.json
+.DS_Store
