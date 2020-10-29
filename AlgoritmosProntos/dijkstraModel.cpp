@@ -1,5 +1,10 @@
-#include <bits/stdc++.h>
+// #include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <math.h>
+
 using namespace std;
+
 
 int main() {
  
